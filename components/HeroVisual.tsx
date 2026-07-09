@@ -66,7 +66,7 @@ export function HeroVisual() {
       <motion.div
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[7%] left-[4%] hidden w-64 xl:block"
+        className="absolute bottom-[7%] left-[4%] hidden w-64 [@media_(min-width:1280px)_and_(min-height:900px)]:block"
       >
         <HudCard title="System Status">
           <div className="mt-4">
@@ -79,7 +79,7 @@ export function HeroVisual() {
       <motion.div
         animate={{ y: [0, 14, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[7%] right-[3%] hidden w-72 xl:block"
+        className="absolute bottom-[7%] right-[3%] hidden w-72 [@media_(min-width:1280px)_and_(min-height:900px)]:block"
       >
         <HudCard title="Hamburg Network">
           <div className="mt-4">

@@ -69,7 +69,7 @@ a {
     0 30px 90px rgba(0, 0, 0, 0.48),
     inset 0 0 44px rgba(0, 140, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(22px) saturate(145%);
+  backdrop-filter: blur(14px) saturate(130%);
 }
 
 .neon-text {
@@ -92,13 +92,14 @@ a {
   animation: gridDrift 22s linear infinite;
 }
 
+/* Static grain. mix-blend-mode over a fixed full-screen layer forces a costly
+   composite on every animated frame (very janky on Windows), so it is omitted. */
 .noise::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.105;
-  mix-blend-mode: screen;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
 
@@ -189,5 +190,16 @@ a {
 @media (max-height: 990px) {
   .sidebar-partner {
     display: none;
+  }
+}
+
+/* Lighter compositing on phones: strong backdrop-blur across many stacked
+   panels is a common source of scroll jank on lower-powered devices. */
+@media (max-width: 768px) {
+  .glass-panel {
+    backdrop-filter: blur(8px) saturate(120%);
+    background:
+      linear-gradient(145deg, rgba(7, 20, 46, 0.92), rgba(2, 8, 20, 0.8)),
+      radial-gradient(circle at 18% 0%, rgba(0, 213, 255, 0.12), transparent 42%);
   }
 }
