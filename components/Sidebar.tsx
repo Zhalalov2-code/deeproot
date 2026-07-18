@@ -52,7 +52,7 @@ function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
   const content = useSiteContent();
 
   return (
-    <nav className="mt-8 space-y-2">
+    <nav className="mt-8 space-y-2" aria-label="Hauptnavigation">
       {navigation.map((item, index) => {
         const active = pathname === item.href;
         const Icon = item.icon;
@@ -83,7 +83,7 @@ export function Sidebar() {
 
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-[260px] border-r border-cyan/20 bg-[linear-gradient(180deg,rgba(2,8,20,.96),rgba(1,5,13,.9))] px-6 py-7 shadow-[16px_0_70px_rgba(0,0,0,.48),inset_-1px_0_0_rgba(0,213,255,.08)] backdrop-blur-2xl lg:block">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-[260px] border-r border-cyan/20 bg-[linear-gradient(180deg,rgba(2,8,20,.96),rgba(1,5,13,.9))] px-6 py-7 shadow-[16px_0_70px_rgba(0,0,0,.48),inset_-1px_0_0_rgba(0,213,255,.08)] backdrop-blur-2xl lg:block" aria-label="Sidebar">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_50%_0%,rgba(0,140,255,.26),transparent_70%)]" />
         <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-32 bg-cyan/5 blur-3xl" />
         <Logo />
@@ -139,6 +139,7 @@ export function Sidebar() {
               exit={{ x: -320 }}
               transition={{ type: "spring", damping: 24, stiffness: 190 }}
               className="h-full w-[310px] border-r border-cyan/25 bg-[linear-gradient(180deg,#030814,#01050d)] px-6 py-7 shadow-[20px_0_70px_rgba(0,0,0,.5)]"
+              aria-label="Mobile Navigation"
             >
               <div className="flex items-center justify-between">
                 <Logo />

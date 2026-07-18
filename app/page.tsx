@@ -1,11 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { Layout } from "@/components/Layout";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { HeroVisual } from "@/components/HeroVisual";
 import { NeonButton } from "@/components/NeonButton";
 import { ServiceCard } from "@/components/ServiceCard";
 import { useSiteContent } from "@/components/LanguageProvider";
 import { BrainCircuit, CheckCircle2, CloudCog, Cpu, Layers3, LockKeyhole, Workflow, Code2 } from "lucide-react";
+
+const footerLinkHrefs = ["/software-development", "/system-integration", "/cloud-solutions", "/ai-data-engineering", "/cybersecurity-protection"] as const;
 
 const heroCardMeta = [
   { href: "/software-development", icon: Code2 },
@@ -23,6 +27,11 @@ export default function Home() {
 
   return (
     <Layout>
+      <BreadcrumbJsonLd
+        items={[
+          { name: siteContent.labels.home, href: "https://deeproot.one" }
+        ]}
+      />
       <section className="relative min-h-screen overflow-hidden px-5 py-8 lg:px-10 xl:px-14">
         <HeroVisual />
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-80px)] max-w-[1640px] grid-cols-1 gap-8 pt-6 lg:min-h-screen lg:grid-cols-[0.9fr_1.1fr] lg:pt-8 xl:grid-cols-[0.85fr_1.15fr] 2xl:grid-cols-[0.78fr_1.22fr]">
@@ -156,8 +165,10 @@ export default function Home() {
         <div className="mx-auto flex max-w-[1500px] flex-col gap-6 text-sm text-slate-300 md:flex-row md:items-center md:justify-between">
           <p className="max-w-xl">{siteContent.footer.text}</p>
           <div className="flex flex-wrap gap-4 text-cyan">
-            {siteContent.footer.links.map((link) => (
-              <span key={link}>{link}</span>
+            {siteContent.footer.links.map((link, index) => (
+              <Link key={link} href={footerLinkHrefs[index]} className="transition hover:text-white hover:underline">
+                {link}
+              </Link>
             ))}
           </div>
         </div>

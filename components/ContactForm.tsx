@@ -70,7 +70,7 @@ export function ContactForm() {
         className="glass-panel flex min-h-[420px] flex-col items-center justify-center rounded-lg p-8 text-center"
       >
         <CheckCircle2 className="h-16 w-16 text-cyan drop-shadow-[0_0_20px_rgba(0,213,255,.8)]" />
-        <h3 className="mt-6 text-2xl font-semibold text-white">{form.successTitle}</h3>
+        <h2 className="mt-6 text-2xl font-semibold text-white">{form.successTitle}</h2>
         <p className="mt-4 max-w-md text-base leading-7 text-slate-300">{form.successText}</p>
         <button
           type="button"
